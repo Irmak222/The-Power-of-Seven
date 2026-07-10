@@ -40,46 +40,13 @@ public class Player {
             NumberCard newNumberCard = (NumberCard) card;
 
             // if the player has the card with the drawn card's value 
-            if(hasNumberInHand(newNumberCard.getValue())) {
+            if(CardManager.hasDuplicate(this.activeHand,newNumberCard.getValue())) {
                 this.isBusted = true; // player is busted
                 this.roundScore = 0; // current round is zero
             } else { // if the player does not have this value
                 this.roundScore += newNumberCard.getValue(); // add this value to the round score
             }
         }
-    }
-
-    /**
-     * Checks if the player has a card with the passed value.
-     * @return true if a matching duplicate exists in hand, false otherwise.
-     */
-    private boolean hasNumberInHand(int value) {
-        // checking all the cards in the player's hand
-        for(int i = 0; i < activeHand.size(); i++) {
-            Card current = activeHand.get(i);
-
-            // if the card is a number card
-            if(current instanceof NumberCard) {
-                NumberCard numberCard = (NumberCard) current;
-                // if the card has that value
-                if(numberCard. getValue() == value) {
-                    return true; // there are duplicates
-                }
-            }
-        }
-        return false; // no duplicates
-    }
-
-    // Checks if the player's hand satisfies the winning condition
-    // (successfully flip seven unique number cards into the hand)
-    public boolean checkWinningHandCondition() {
-        int numberCount = 0; 
-        for(int i = 0; i < activeHand.size(); i++) {
-            if(activeHand.get(i) instanceof NumberCard) {
-                numberCount++;
-            }
-        }
-        return numberCount == 7;
     }
 
     // Resets the round state after every round
@@ -91,8 +58,12 @@ public class Player {
     }
 
 
+    // adding points to the total score
+    public void addPointsToTotalScore(int points) {
+        this.totalScore += points;
+    }
 
-    // Getters and setters
+    // Getters
     public String getName() {
         return name;
     }
@@ -105,37 +76,22 @@ public class Player {
         return roundScore;
     }
 
-    public void setRoundScore(int roundScore) {
-        this.roundScore = roundScore;
-    }
-
     public int getTotalScore() {
         return totalScore;
-    }
-
-    // adding points to the total score
-    public void addPointsToTotalScore(int points) {
-        this.totalScore += points;
     }
 
     public boolean isBusted() {
         return isBusted;
     }
 
-    public void setBusted(boolean isBusted) {
-        this.isBusted = isBusted;
-    }
-
     public boolean isFrozen() {
         return isFrozen;
-    }
-
-    public void setFrozen(boolean isFrozen) {
-        this.isFrozen = isFrozen;
     }
 
     public ArrayList<Card> getActiveHand() {
         return activeHand;
     }
+
 }
+
 
