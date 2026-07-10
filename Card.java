@@ -18,10 +18,4 @@ public abstract class Card {
     public String getCardName() {
         return cardName;
     }
-
-    // Overriding toString() to display the card name
-    @Override
-    public String toString() {
-        return cardName;
-    }
 }
