@@ -137,11 +137,5 @@ public class Player {
     public ArrayList<Card> getActiveHand() {
         return activeHand;
     }
-
-    // displays player's total score and current round score with player's name
-    @Override
-    public String toString() {
-        return "Player: " + name + " | Total Score: " + totalScore + " | Current Round Points: " + roundScore;
-    }
 }
 
