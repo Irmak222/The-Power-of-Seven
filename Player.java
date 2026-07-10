@@ -57,6 +57,10 @@ public class Player {
         this.isFrozen = false; // player is not frozen yet
     }
 
+    // Player being frozen
+    public void freeze() {
+        this.isFrozen = true;
+    }
 
     // adding points to the total score
     public void addPointsToTotalScore(int points) {
