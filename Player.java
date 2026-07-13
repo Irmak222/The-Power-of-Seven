@@ -88,6 +88,10 @@ public class Player {
         return isBusted;
     }
 
+    public void setIsBusted(boolean setBusted) {
+        isBusted = setBusted;
+    }
+
     public boolean isFrozen() {
         return isFrozen;
     }
