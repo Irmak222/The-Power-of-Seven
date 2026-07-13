@@ -7,11 +7,11 @@ public class CardProcessor {
     }
 
     // Checks if the player has same card with drawn card
-    public static boolean hasDuplicate(ArrayList<Card> hand, int searchValue) {
+    public static boolean hasDuplicate(ArrayList<Card> hand, NumberCard cardDrawn) {
         for(int i = 0; i < hand.size(); i++){
             if(hand.get(i) instanceof NumberCard){
                 NumberCard newNumberCard = (NumberCard) hand.get(i);
-                if(newNumberCard.getValue() == searchValue){
+                if(newNumberCard.getValue() == cardDrawn.getValue(){
                     return true;
                 }
             }
