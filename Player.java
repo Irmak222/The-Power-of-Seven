@@ -62,9 +62,19 @@ public class Player {
         this.isFrozen = true;
     }
 
+    // Player being unfrozen
+    public void unFreeze() {
+        isFrozen = false;
+    }
+
     // adding points to the total score
     public void addPointsToTotalScore(int points) {
         this.totalScore += points;
+    }
+    
+    //Setters
+    public void setIsBusted(boolean setBusted) {
+        isBusted = setBusted;
     }
 
     // Getters
@@ -86,10 +96,6 @@ public class Player {
 
     public boolean isBusted() {
         return isBusted;
-    }
-
-    public void setIsBusted(boolean setBusted) {
-        isBusted = setBusted;
     }
 
     public boolean isFrozen() {
