@@ -40,7 +40,7 @@ public class Player {
             NumberCard newNumberCard = (NumberCard) card;
 
             // if the player has the card with the drawn card's value 
-            if(CardProcessor.hasDuplicate(this.activeHand,newNumberCard.getValue())) {
+            if(CardProcessor.hasDuplicate(this.activeHand,newNumberCard)) {
                 this.isBusted = true; // player is busted
                 this.roundScore = 0; // current round is zero
             } else { // if the player does not have this value
