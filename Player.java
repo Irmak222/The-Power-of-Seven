@@ -51,6 +51,7 @@ public class Player {
 
     // Resets the round state after every round
     public void resetRoundState() {
+        addPointsToTotalScore(this.roundScore); // adds round score to total score
         this.activeHand.clear(); // clears player's hand
         this.roundScore = 0; // resets the score
         this.isBusted = false; // player is not busted yet
