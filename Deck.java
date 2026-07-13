@@ -47,10 +47,10 @@ public class Deck {
 
         // generating modifier cards
         cards.add(new ModifierCard("card_" + idCounter++, "Modifier +2", 2, false));
-        cards.add(new ModifierCard("card_" + idCounter++, "Modifier +4", 2, false));
-        cards.add(new ModifierCard("card_" + idCounter++, "Modifier +6", 2, false));
-        cards.add(new ModifierCard("card_" + idCounter++, "Modifier +8", 2, false));
-        cards.add(new ModifierCard("card_" + idCounter++, "Modifier +10", 2, false));
+        cards.add(new ModifierCard("card_" + idCounter++, "Modifier +4", 4, false));
+        cards.add(new ModifierCard("card_" + idCounter++, "Modifier +6", 6, false));
+        cards.add(new ModifierCard("card_" + idCounter++, "Modifier +8", 8, false));
+        cards.add(new ModifierCard("card_" + idCounter++, "Modifier +10", 10, false));
         cards.add(new ModifierCard("card_" + idCounter++, "Modifier x2", 0, true));
         
 
