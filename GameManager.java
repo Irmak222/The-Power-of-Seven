@@ -25,29 +25,46 @@ public class GameManager {
 
     }
 
-    // Starting a new round by shuffling the deck and resets all players' states
+    // Starts a new round and resets all players' states
     public void startNewRound() {
-
+        currentRound++;
+        for( Player player : players){
+            for( Card card : player.getActiveHand()){
+                deck.discard(card);
+            }
+            player.resetRoundState();
+        }
     }
 
     // Executing Flip action (drawing card)
     public void flip() {
-
+        Card card = deck.draw();
+        players.get(currentPlayerIndex).addCardToHand(card);
     }
 
     // Executing Stay action
     public void stay() {
-
+        players.get(currentPlayerIndex).freeze();
     }
 
     // Passes turn to the next active player
     private void passTurn() {
-
+        if(currentPlayerIndex == players.size() - 1){
+            currentPlayerIndex = 0;
+        }
+        else{
+            currentPlayerIndex++;
+        }
     }
 
     // Checks if any player reachs the target score
     public boolean isGameOver() {
-
+        for( Player player : players){
+            if(player.getTotalScore() > TARGET_SCORE){
+                return true;
+            }
+        }
+        return false;
     }
 
 }
