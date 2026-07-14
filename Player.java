@@ -76,6 +76,10 @@ public class Player {
     public void setIsBusted(boolean setBusted) {
         isBusted = setBusted;
     }
+    
+    public void setTotalScore(int value){
+        totalScore = value;
+    }
 
     // Getters
     public String getName() {
