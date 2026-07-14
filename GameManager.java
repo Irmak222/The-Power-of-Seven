@@ -29,6 +29,7 @@ public class GameManager {
     public void startNewRound() {
         currentRound++;
         for( Player player : players){
+            player.setTotalScore(player.getTotalScore() - player.getRoundScore() + CardProcessor.calculateHandScore(player.getActiveHand()));
             for( Card card : player.getActiveHand()){
                 deck.discard(card);
             }
