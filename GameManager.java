@@ -7,8 +7,6 @@ public class GameManager {
     private final ArrayList<Player> players;
     // Tracks which player's turn
     private int currentPlayerIndex;
-    // Tracks the which rouns is being played currently
-    private int currentRound;
     // The target score that players should reach to win the game
     private static final int TARGET_SCORE = 200;
 
@@ -17,17 +15,10 @@ public class GameManager {
         this.deck = new Deck(); // initialize a new deck
         this.players = new ArrayList<>();
         this.currentPlayerIndex = 0;
-        this.currentRound = 1;
-    }
-
-    // Starting a new game 
-    public void startNewGame(ArrayList<Player> activePlayers) {
-
     }
 
     // Starts a new round and resets all players' states
     public void startNewRound() {
-        currentRound++;
         for( Player player : players){
             player.setTotalScore(player.getTotalScore() - player.getRoundScore() + CardProcessor.calculateHandScore(player.getActiveHand()));
             for( Card card : player.getActiveHand()){
