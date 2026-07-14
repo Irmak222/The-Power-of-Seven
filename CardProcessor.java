@@ -49,7 +49,7 @@ public class CardProcessor {
     }
 
     // Ends round with score calculation and clears the table
-    private static int calculateHandScore(ArrayList<Card> hand) {
+    public static int calculateHandScore(ArrayList<Card> hand) {
         int roundTotalScore = 0;
         boolean hasMultiplier = false;
         
