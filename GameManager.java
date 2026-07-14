@@ -48,7 +48,7 @@ public class GameManager {
     }
 
     // Passes turn to the next active player
-    private void passTurn() {
+    public void passTurn() {
         if(currentPlayerIndex == players.size() - 1){
             currentPlayerIndex = 0;
         }
