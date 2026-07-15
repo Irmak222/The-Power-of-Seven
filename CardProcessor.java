@@ -11,7 +11,7 @@ public class CardProcessor {
         for(int i = 0; i < hand.size(); i++){
             if(hand.get(i) instanceof NumberCard){
                 NumberCard newNumberCard = (NumberCard) hand.get(i);
-                if(newNumberCard.getValue() == cardDrawn.getValue(){
+                if(newNumberCard.getValue() == cardDrawn.getValue()){
                     return true;
                 }
             }
