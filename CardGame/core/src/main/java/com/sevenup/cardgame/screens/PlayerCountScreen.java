@@ -2,12 +2,17 @@ package com.sevenup.cardgame.screens;
 
 import com.badlogic.gdx.Screen;
 import com.sevenup.cardgame.Main;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
+
+import javax.swing.plaf.basic.BasicButtonListener;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
+import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.graphics.*;
 
 public class PlayerCountScreen implements Screen{
@@ -63,8 +68,27 @@ public class PlayerCountScreen implements Screen{
             .height(stage.getHeight() * 0.2f)
             .pad(40);
 
-        
-        }
+        threeBtn.addListener(new ChangeListener(){
+            @Override
+            public void changed(ChangeEvent e,Actor a){
+                game.setScreen(new PlayerSetUpScreen(game,3));
+            }
+        });
+
+        fourBtn.addListener(new ChangeListener(){
+            @Override
+            public void changed(ChangeEvent e,Actor a){
+                game.setScreen(new PlayerSetUpScreen(game,4));
+            }
+        });
+
+        fiveBtn.addListener(new ChangeListener(){
+            @Override
+            public void changed(ChangeEvent e,Actor a){
+                game.setScreen(new PlayerSetUpScreen(game,5));
+            }
+        });
+    }
 
     public void render(float delta) {
         ScreenUtils.clear(0.93f, 0.90f, 0.98f, 1);
@@ -75,6 +99,7 @@ public class PlayerCountScreen implements Screen{
     public void resize(int width, int height) {
         stage.getViewport().update(width, height, true);
         table.clearChildren();
+        title.setFontScale(width/640.0f);
         table.add(title).colspan(3).padBottom(60);
         table.row();
 
