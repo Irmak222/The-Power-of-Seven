@@ -14,6 +14,11 @@ public class PlayerCountScreen implements Screen{
     private final Main game; 
     private Stage stage;
     private Skin skin;
+    private TextButton threeBtn;
+    private TextButton fourBtn;
+    private TextButton fiveBtn;
+    private Table table;
+    private Label title;
 
     public PlayerCountScreen(Main game) {
         this.game = game;
@@ -25,39 +30,41 @@ public class PlayerCountScreen implements Screen{
         Gdx.input.setInputProcessor(stage);
         skin = new Skin(Gdx.files.internal("ui/uiskin.json"));
 
-        Table table = new Table();
+        table = new Table();
         table.setFillParent(true);
-        table.top().padTop(80);
         stage.addActor(table);
 
         LabelStyle titleStyle = new LabelStyle();
         titleStyle.font = skin.getFont("window");
         titleStyle.fontColor = Color.BLACK;
 
-        Label title = new Label("Select Player Count", titleStyle);
+        title = new Label("Select Player Count", titleStyle);
 
-        TextButton threeBtn = new TextButton("3", skin);
-        TextButton fourBtn = new TextButton("4", skin);
-        TextButton fiveBtn = new TextButton("5", skin);
+        threeBtn = new TextButton("3", skin);
+        fourBtn = new TextButton("4", skin);
+        fiveBtn = new TextButton("5", skin);
 
         table.add(title).colspan(3).padBottom(60);
         table.row();
 
         table.add(threeBtn)
-            .width(220)
-            .height(70)
-            .pad(20);
+            .width(stage.getWidth() * 0.2f)
+            .height(stage.getHeight() * 0.2f)
+            .pad(40);
 
         table.add(fourBtn)
-            .width(220)
-            .height(70)
-            .pad(20);
+            .width(stage.getWidth() * 0.2f)
+            .height(stage.getHeight() * 0.2f)
+            .pad(40);
+
 
         table.add(fiveBtn)
-            .width(220)
-            .height(70)
-            .pad(20);
-    }
+            .width(stage.getWidth() * 0.2f)
+            .height(stage.getHeight() * 0.2f)
+            .pad(40);
+
+        
+        }
 
     public void render(float delta) {
         ScreenUtils.clear(0.93f, 0.90f, 0.98f, 1);
@@ -67,6 +74,26 @@ public class PlayerCountScreen implements Screen{
 
     public void resize(int width, int height) {
         stage.getViewport().update(width, height, true);
+        table.clearChildren();
+        table.add(title).colspan(3).padBottom(60);
+        table.row();
+
+        table.add(threeBtn)
+            .width(stage.getWidth() * 0.2f)
+            .height(stage.getHeight() * 0.2f)
+            .pad(40);
+
+        table.add(fourBtn)
+            .width(stage.getWidth() * 0.2f)
+            .height(stage.getHeight() * 0.2f)
+            .pad(40);
+
+
+        table.add(fiveBtn)
+            .width(stage.getWidth() * 0.2f)
+            .height(stage.getHeight() * 0.2f)
+            .pad(40);
+
     }
 
     public void hide() {
