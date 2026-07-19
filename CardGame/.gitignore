@@ -1,0 +1,23 @@
+# Gradle build directories
+build/
+.gradle/
+.settings/
+.classpath
+.project
+
+# Compiled Java files
+*.class
+*.jar
+*.war
+*.nar
+*.ear
+
+# IDE specific files
+.idea/
+*.iml
+.vscode/
+.DS_Store
+
+# Native libraries and temporary files
+tmp/
+*.log
