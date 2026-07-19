@@ -1,4 +1,11 @@
+package com.sevenup.cardgame;
 import java.util.ArrayList;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import com.sevenup.cardgame.database.DatabaseManager;
 
 public class ProfileManager {
     // Registered users
