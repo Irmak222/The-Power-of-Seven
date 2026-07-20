@@ -77,4 +77,15 @@ public class ProfileManager {
         }
     }
 
+    // Checks the registry to verify whether there is an account or not
+    public boolean isRegistered(String userName, String password) throws SQLException {
+        return login(userName, password);
+    }
+
+    // Getters
+    public ArrayList<Player> getRegisteredUsers() {
+        return registeredUsers;
+    }
+}
+
     
