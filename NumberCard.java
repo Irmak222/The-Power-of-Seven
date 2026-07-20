@@ -3,8 +3,8 @@ public class NumberCard extends Card {
     private final int value;  // the numeric value of the card
 
     // Constructor for NumberCard
-    public NumberCard(String id, String cardName, int value) {
-        super(id, cardName);
+    public NumberCard(String id, String cardName,String cardImageName, int value) {
+        super(id, cardName, cardImageName);
         this.value = value;
     }
 
