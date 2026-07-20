@@ -33,7 +33,7 @@ public class GameManager {
     // Executing Flip action (drawing card)
     public void flip() {
         Card card = deck.draw();
-        players.get(currentPlayerIndex).addCardToHand(card);
+        players.get(currentPlayerIndex).addCardToHand(card,deck);
     }
 
     // Executing Stay action
