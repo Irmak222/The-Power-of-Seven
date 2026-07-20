@@ -20,7 +20,9 @@ public class GameManager {
     // Starts a new round and resets all players' states
     public void startNewRound() {
         for( Player player : players){
+            if(!player.isBusted()) {
             player.setTotalScore(player.getTotalScore() - player.getRoundScore() + CardProcessor.calculateHandScore(player.getActiveHand()));
+            }
             for( Card card : player.getActiveHand()){
                 deck.discard(card);
             }
@@ -57,6 +59,28 @@ public class GameManager {
             }
         }
         return false;
+    }
+
+    // Adds a player
+    public void addPlayer(Player player) {
+        this.players.add(player);
+    }
+
+    // Getters
+    public Deck getDeck() {
+        return deck;
+    }
+
+    public ArrayList<Player> getPlayers() {
+        return players;
+    }
+
+    public int getCurrentPlayerIndex() {
+        return currentPlayerIndex;
+    }
+
+    public static int getTargetScore() {
+        return TARGET_SCORE;
     }
 
 }
