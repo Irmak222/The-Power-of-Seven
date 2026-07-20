@@ -75,6 +75,36 @@ public class GameManager {
         return false;
     }
 
+    // check if the round is over
+    public boolean isRoundOver() {
+        // check if the player has seven unique cards
+        for (Player player : players) {
+            if (hasSevenUniqueNumbers(player)) {
+                return true;
+            }
+        }
+
+        // check if there is any active player(not busted or frozen)
+        for (Player player : players) {
+            if (!player.isBusted() && !player.isFrozen()) {
+                return false; 
+            }
+        }
+
+        return true; // each player is busted or frozen
+    }
+
+    // check if the player has seven unqiue cards
+    public boolean hasSevenUniqueNumbers(Player player) {
+        int count = 0;
+        for (Card card : player.getActiveHand()) {
+            if (card instanceof NumberCard) {
+                count++;
+            }
+        }
+        return count >= 7; 
+    }
+
     // Adds a player
     public void addPlayer(Player player) {
         this.players.add(player);
