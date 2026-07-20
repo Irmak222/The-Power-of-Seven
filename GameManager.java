@@ -21,13 +21,20 @@ public class GameManager {
     public void startNewRound() {
         for( Player player : players){
             if(!player.isBusted()) {
-            player.setTotalScore(player.getTotalScore() - player.getRoundScore() + CardProcessor.calculateHandScore(player.getActiveHand()));
+            int score = CardProcessor.calculateHandScore(player.getActiveHand());
+                // if player has seven unique cards,add score to 15 points
+                if (hasSevenUniqueNumbers(player)) {
+                    score += 15;
+                }
+                player.setTotalScore(player.getTotalScore() + score);
             }
             for( Card card : player.getActiveHand()){
                 deck.discard(card);
             }
             player.resetRoundState();
         }
+        // new round starts with first player
+        this.currentPlayerIndex = 0;
     }
 
     // Executing Flip action (drawing card)
@@ -43,24 +50,19 @@ public class GameManager {
 
     // Passes turn to the next active player
     public void passTurn() {
-        int totalPlayers = players.size();
-        int count = 0;
+        players.get(currentPlayerIndex).setSecondChanceUsed(false);
 
-        while (count < totalPlayers) {
-            // When reaches the last player, turn the first one
-            if (currentPlayerIndex == totalPlayers - 1) {
-                currentPlayerIndex = 0;
-            } else {
-                currentPlayerIndex++;
-            }
+        currentPlayerIndex++;
+        if (currentPlayerIndex >= players.size()) {
+            currentPlayerIndex = 0; // when reaches the end of the list, turn the first player
+        }
 
-            count++;
-
-            Player nextPlayer = players.get(currentPlayerIndex);
-
-            // if the next player is not busted and not frozen, it will be next player's turn.
-            if (!nextPlayer.isBusted() && !nextPlayer.isFrozen()) {
-                return; 
+        // Keep passing the turn until find the not busted or not frozen player
+        while ((players.get(currentPlayerIndex).isBusted() || players.get(currentPlayerIndex).isFrozen()) && !isRoundOver()) {
+            
+            currentPlayerIndex++;
+            if (currentPlayerIndex >= players.size()) {
+                currentPlayerIndex = 0; // when reaches the end of the list, turn the first player
             }
         }
     }
@@ -84,7 +86,7 @@ public class GameManager {
             }
         }
 
-        // check if there is any active player(not busted or frozen)
+        // check if there is any active player(not busted and not frozen)
         for (Player player : players) {
             if (!player.isBusted() && !player.isFrozen()) {
                 return false; 
