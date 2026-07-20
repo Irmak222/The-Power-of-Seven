@@ -29,30 +29,30 @@ public class Deck {
         int idCounter = 1; // counter for card ID's
 
         // generating number cards 
-        cards.add(new NumberCard("card_" + idCounter++, "Number 0", 0)); // there is one Number 0 card in the deck
-        cards.add(new NumberCard("card_" + idCounter++, "Number 1", 1)); // there is one number 1 card in th deck
+        cards.add(new NumberCard("card_" + idCounter++, "Number 0","0.png", 0)); // there is one Number 0 card in the deck
+        cards.add(new NumberCard("card_" + idCounter++, "Number 1","1.png", 1)); // there is one number 1 card in th deck
 
         // from Number 2 to Number 12, adding cards equivalent to the card's numerical value
         for(int value = 2; value <= 12; value++) {
             for(int count = 0; count < value; count++) {
-                cards.add(new NumberCard("card_" + idCounter++, "Number" + value, value));
+                cards.add(new NumberCard("card_" + idCounter++, "Number" + value, value + ".png", value));
             }
         }
 
         // generating action cards
         for(int i = 0; i < 3; i++) { // thrre cards for each action card
-            cards.add(new ActionCard("card_" + idCounter++, "Freeze", ActionCard.FREEZE));
-            cards.add(new ActionCard("card_" + idCounter++, "Flip Three", ActionCard.FLIP_THREE));
-            cards.add(new ActionCard("card_" + idCounter++, "Second Chance", ActionCard.SECOND_CHANCE));
+            cards.add(new ActionCard("card_" + idCounter++, "Freeze","Freeze.png", ActionCard.FREEZE));
+            cards.add(new ActionCard("card_" + idCounter++, "Flip Three","FlipThree.png", ActionCard.FLIP_THREE));
+            cards.add(new ActionCard("card_" + idCounter++, "Second Chance","SecondChance.png", ActionCard.SECOND_CHANCE));
         }
 
         // generating modifier cards
-        cards.add(new ModifierCard("card_" + idCounter++, "Modifier +2", 2, false));
-        cards.add(new ModifierCard("card_" + idCounter++, "Modifier +4", 4, false));
-        cards.add(new ModifierCard("card_" + idCounter++, "Modifier +6", 6, false));
-        cards.add(new ModifierCard("card_" + idCounter++, "Modifier +8", 8, false));
-        cards.add(new ModifierCard("card_" + idCounter++, "Modifier +10", 10, false));
-        cards.add(new ModifierCard("card_" + idCounter++, "Modifier x2", 0, true));
+        cards.add(new ModifierCard("card_" + idCounter++, "Modifier +2", "PlusTwo.png",2, false));
+        cards.add(new ModifierCard("card_" + idCounter++, "Modifier +4", "PlusFour.png",4, false));
+        cards.add(new ModifierCard("card_" + idCounter++, "Modifier +6", "PlusSix.png",6, false));
+        cards.add(new ModifierCard("card_" + idCounter++, "Modifier +8", "PlusEight.png",8, false));
+        cards.add(new ModifierCard("card_" + idCounter++, "Modifier +10", "PlusTen.png",10, false));
+        cards.add(new ModifierCard("card_" + idCounter++, "Modifier x2", "TimesTwo.png",0, true));
         
 
     }
