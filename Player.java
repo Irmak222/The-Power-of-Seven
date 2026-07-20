@@ -32,20 +32,49 @@ public class Player {
     }
 
     // Adding the drawn card to the player's hand
-    public void addCardToHand(Card card) {
-        activeHand.add(card); // add card to the hand
-
+    public void addCardToHand(Card card, Deck deck) {
         // check if the drawn card is number card
         if(card instanceof NumberCard) {
             NumberCard newNumberCard = (NumberCard) card;
+            activeHand.add(card); // add card to the hand
 
             // if the player has the card with the drawn card's value 
-            if(CardProcessor.hasDuplicate(this.activeHand,newNumberCard)) {
-                this.isBusted = true; // player is busted
-                this.roundScore = 0; // current round is zero
-            } else { // if the player does not have this value
-                this.roundScore += newNumberCard.getValue(); // add this value to the round score
+            if (CardProcessor.hasDuplicate(this.activeHand, newNumberCard)) {
+                // if the player has a second chance card
+                if (CardProcessor.hasSecondChance(this)) {
+                    // remove the duplicate from the player's hand and discard
+                    activeHand.remove(card);
+                    deck.discard(card);
+
+                    // Remove the second chance card frpm the player's hand and discard
+                    Card secondChanceCard = null;
+                    boolean found = false;
+
+                    for (int i = 0; i < activeHand.size() && !found; i++) {
+                        if (activeHand.get(i).getCardName().equals("Second Chance")) {
+                            secondChanceCard = activeHand.get(i);
+                            found = true;
+                        }
+                    }
+
+                    if (secondChanceCard != null) {
+                        activeHand.remove(secondChanceCard);
+                        deck.discard(secondChanceCard);
+                    }
+
+                    // player is not busted since player used the second chance card
+                    this.isBusted = false;
+                } else {
+                    // if player does not have second chance card, player is busted
+                    this.isBusted = true;
+                    this.roundScore = 0;
+                }
+            } else {
+                // if there is no duplicate , add the point
+                this.roundScore += newNumberCard.getValue();
             }
+        } else {
+            activeHand.add(card);
         }
     }
 
