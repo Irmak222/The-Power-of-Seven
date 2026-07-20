@@ -10,8 +10,8 @@ public class ActionCard extends Card {
     private final String actionType;
 
     // Constructor for ActionCard
-    public ActionCard(String id, String cardName, String actionType) {
-        super(id, cardName);
+    public ActionCard(String id, String cardName, String cardImageName, String actionType) {
+        super(id, cardName, cardImageName);
         this.actionType = actionType;  
     }
 
