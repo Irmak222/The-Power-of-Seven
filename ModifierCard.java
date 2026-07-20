@@ -4,12 +4,11 @@ public class ModifierCard extends Card {
     private final boolean isMultiplier; // flag to determine if this card multiplies the score instead of adding bonus points
     
     // Constructor for ModifierCard
-    public ModifierCard(String id, String cardName, int bonusPoints, boolean isMultiplier) {
-        super(id, cardName);
+     public ModifierCard(String id, String cardName,String cardImageName, int bonusPoints, boolean isMultiplier) {
+        super(id, cardName, cardImageName);
         this.bonusPoints = bonusPoints;
         this.isMultiplier = isMultiplier;
     }
-
     // getter for bonus points
     public int getBonusPoints() {
         return bonusPoints;
