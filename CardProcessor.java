@@ -45,9 +45,9 @@ public class CardProcessor {
 
     // Player flipping three cards consecutively
     public static void flipThree(Player player, Deck deck) {
-        player.addCardToHand(deck.draw());
-        player.addCardToHand(deck.draw());
-        player.addCardToHand(deck.draw());
+        player.addCardToHand(deck.draw(),deck);
+        player.addCardToHand(deck.draw(),deck);
+        player.addCardToHand(deck.draw(),deck);
     }
 
     // Ends round with score calculation and clears the table
