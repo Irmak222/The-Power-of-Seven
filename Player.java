@@ -19,6 +19,8 @@ public class Player {
     private boolean isFrozen;
     // all cards that are drawn during the current round
     private final ArrayList<Card> activeHand;
+    // flag to checl if the player used second chance card
+    private boolean secondChanceUsed = false;
 
     // Constructor for Player
     public Player(String name, boolean isGuest) {
@@ -64,6 +66,7 @@ public class Player {
 
                     // player is not busted since player used the second chance card
                     this.isBusted = false;
+                    this.secondChanceUsed = true;
                 } else {
                     // if player does not have second chance card, player is busted
                     this.isBusted = true;
@@ -137,6 +140,14 @@ public class Player {
 
     public ArrayList<Card> getActiveHand() {
         return activeHand;
+    }
+
+    public boolean isSecondChanceUsed() {
+        return secondChanceUsed;
+    }
+
+    public void setSecondChanceUsed(boolean isUsed) {
+        this.secondChanceUsed = isUsed;
     }
 
 }
