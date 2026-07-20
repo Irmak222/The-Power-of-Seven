@@ -13,6 +13,7 @@ public class Deck {
         this.cards = new ArrayList<>();
         this.discardPile = new ArrayList<>();
         initializeDeck(); // generates all 94 game cards
+        shuffle(); // shuffle the cards for starting the game
     }
 
     // Shuffles the deck of cards
