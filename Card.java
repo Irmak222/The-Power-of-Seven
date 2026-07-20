@@ -2,11 +2,13 @@
 public abstract class Card {
     private final String id; // unique identifier for the card 
     private final String cardName; // name of the card
-
+     private final Texture cardImage; // card images
+    
     // Constructor to initialize a card with fixed identifiers. 
-    public Card(String id, String cardName) {
+    public Card(String id, String cardName, String cardImageName) {
         this.id = id;
         this.cardName = cardName;
+        this.cardImage = new Texture(cardImageName);        
     }
 
     // getter for card ID
@@ -17,6 +19,11 @@ public abstract class Card {
     // getter for card name
     public String getCardName() {
         return cardName;
+    }
+
+    //getter for card image
+    public Texture getImage() {
+        return cardImage;
     }
 
     @Override
