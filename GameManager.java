@@ -43,11 +43,17 @@ public class GameManager {
 
     // Passes turn to the next active player
     public void passTurn() {
-        if(currentPlayerIndex == players.size() - 1){
-            currentPlayerIndex = 0;
-        }
-        else{
-            currentPlayerIndex++;
+        int count = 0;
+
+        // if the next player is busted or frozen, keep passing the turn
+        while((players.get(currentPlayerIndex).isBusted() || players.get(currentPlayerIndex).isFrozen()) && count < players.size()) {
+            if (currentPlayerIndex == players.size() - 1) {
+                currentPlayerIndex = 0;
+            } else {
+                currentPlayerIndex++;
+            }
+            
+            count++;
         }
     }
 
