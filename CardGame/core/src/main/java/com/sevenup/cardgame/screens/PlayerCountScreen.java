@@ -24,9 +24,10 @@ public class PlayerCountScreen implements Screen{
     private TextButton fiveBtn;
     private Table table;
     private Label title;
-
-    public PlayerCountScreen(Main game) {
+    private String username;
+    public PlayerCountScreen(Main game, String username) {
         this.game = game;
+        this.username = username;
     }
 
     public void show() {
@@ -71,21 +72,21 @@ public class PlayerCountScreen implements Screen{
         threeBtn.addListener(new ChangeListener(){
             @Override
             public void changed(ChangeEvent e,Actor a){
-                game.setScreen(new PlayerSetUpScreen(game,3));
+                game.setScreen(new PlayerSetUpScreen(game,3, username));
             }
         });
 
         fourBtn.addListener(new ChangeListener(){
             @Override
             public void changed(ChangeEvent e,Actor a){
-                game.setScreen(new PlayerSetUpScreen(game,4));
+                game.setScreen(new PlayerSetUpScreen(game,4,username));
             }
         });
 
         fiveBtn.addListener(new ChangeListener(){
             @Override
             public void changed(ChangeEvent e,Actor a){
-                game.setScreen(new PlayerSetUpScreen(game,5));
+                game.setScreen(new PlayerSetUpScreen(game,5,username));
             }
         });
     }

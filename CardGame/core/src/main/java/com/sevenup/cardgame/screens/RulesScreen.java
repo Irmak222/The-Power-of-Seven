@@ -24,10 +24,12 @@ public class RulesScreen implements Screen{
     private TextButton backBtn;
     private Texture texture;
     private SpriteBatch batch;
+    private String username;
 
     private Table table;
-    public RulesScreen(Main game) {
+    public RulesScreen(Main game, String username) {
         this.game = game;
+        this.username = username;
     }
 
     public void show() {
@@ -53,7 +55,7 @@ public class RulesScreen implements Screen{
         backBtn.addListener(new ChangeListener(){
             @Override
             public void changed(ChangeEvent e,Actor a){
-                game.setScreen(new HomeScreen(game));
+                game.setScreen(new HomeScreen(game,username));
             }
         });
     }

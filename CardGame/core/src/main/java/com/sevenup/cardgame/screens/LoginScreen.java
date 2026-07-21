@@ -23,7 +23,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
-import com.sevenup.cardgame.Main;
+import com.sevenup.cardgame.*;
 
 public class LoginScreen implements Screen {
     private final Main game;
@@ -156,11 +156,17 @@ public class LoginScreen implements Screen {
 
                 // Check if username and password match perfectly
                 try {
-                    // This will be written with database information and methods.
-                    
+                    ProfileManager profileManager = new ProfileManager();
+
+                    if(profileManager.login(username,password)){
+                        game.setScreen(new HomeScreen(game, username));
+                    }else{
+                        errorLabel.setText("Wrong username or password!");
+                    }
 
                 } catch (Exception e) {
-                    
+                    errorLabel.setText("Database error!");
+                    e.printStackTrace();
                 }
             }
         });

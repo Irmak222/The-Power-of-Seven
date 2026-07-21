@@ -1,21 +1,30 @@
-package com.sevenup.cardgame.screens;
 
+package com.sevenup.cardgame.screens;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.Screen;
 import com.sevenup.cardgame.Main;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.graphics.*;
 
 public class HomeScreen  implements Screen {
     private Main game;
     private Stage stage;
     private Skin skin;
-    public HomeScreen(Main game) {
+    private String username;
+    public HomeScreen(Main game, String username) {
         this.game = game;
+        this.username = username;
+    }
+    public HomeScreen(Main game) {
+        this(game, "User");
     }
     @Override
     public void show() {
@@ -32,14 +41,33 @@ public class HomeScreen  implements Screen {
 
     stage.addActor(table);
 
-    LabelStyle titleStyle = new LabelStyle();
-    titleStyle.font = skin.getFont("window");
-    titleStyle.fontColor = Color.BLACK;
+    FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("ARIAL.TTF"));
 
-    Label title = new Label("Welcome, User!", titleStyle);
+    FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
+
+    parameter.size = 48;
+    parameter.color = Color.BLACK;
+
+    BitmapFont titleFont = generator.generateFont(parameter);
+    generator.dispose();
+
+    LabelStyle titleStyle = new LabelStyle(titleFont, Color.BLACK);
+    Label title = new Label("Welcome, " + username + "!", titleStyle);
 
     TextButton newGame = new TextButton("New Game", skin);
+    newGame.addListener(new ClickListener() {
+    @Override
+    public void clicked(InputEvent event, float x, float y) {
+        game.setScreen(new PlayerCountScreen(game, username));
+    }
+});
     TextButton rules = new TextButton("Rules", skin);
+    rules.addListener(new ClickListener() {
+    @Override
+    public void clicked(InputEvent event, float x, float y) {
+        game.setScreen(new RulesScreen(game,username));
+    }
+});
     TextButton profile = new TextButton("Profile", skin);
     TextButton exit = new TextButton("Exit", skin);
 

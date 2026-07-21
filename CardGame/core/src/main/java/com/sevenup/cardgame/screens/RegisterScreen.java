@@ -23,7 +23,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
-import com.sevenup.cardgame.Main;
+import com.sevenup.cardgame.*;
 
 public class RegisterScreen implements Screen{
     private final Main game;
@@ -168,15 +168,20 @@ public class RegisterScreen implements Screen{
 
                 // Check if username is already taken 
                 try {
-                    // This wil be written with database information and methods.
+
+                    ProfileManager profileManager = new ProfileManager();
+
+                    if (profileManager.register(username, password)) {
+                        game.setScreen(new HomeScreen(game, username));
+                    } else {
+                        errorLabel.setText("Username already exists!");
+                        return;
+                    }
 
                 } catch (Exception e) {
-                    
+                    errorLabel.setText("Database error!");
+                    e.printStackTrace();
                 }
-
-                // Clear error message and the home screen is opened
-                errorLabel.setText("");
-                game.setScreen(new HomeScreen(game));
             }
         });
 
