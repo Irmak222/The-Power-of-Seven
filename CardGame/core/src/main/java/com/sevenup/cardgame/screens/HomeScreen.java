@@ -69,7 +69,14 @@ public class HomeScreen  implements Screen {
     }
 });
     TextButton profile = new TextButton("Profile", skin);
+
     TextButton exit = new TextButton("Exit", skin);
+    exit.addListener(new ClickListener() {
+    @Override
+    public void clicked(InputEvent event, float x, float y) {
+        game.setScreen(new ClosingScreen(game,username));
+    }
+});
 
     table.add(title).colspan(2).padBottom(60);
     table.row();

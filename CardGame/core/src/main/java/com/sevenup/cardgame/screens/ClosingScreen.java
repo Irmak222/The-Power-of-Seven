@@ -22,10 +22,12 @@ public class ClosingScreen implements Screen{
     private Skin skin;
     private TextButton backBtn;
     private TextButton quitBtn;
+    private String username;
 
     private Table table;
-    public ClosingScreen(Main game) {
+    public ClosingScreen(Main game, String username) {
         this.game = game;
+        this.username = username;
     }
 
     public void show() {
@@ -62,7 +64,7 @@ public class ClosingScreen implements Screen{
         backBtn.addListener(new ChangeListener(){
             @Override
             public void changed(ChangeEvent e,Actor a){
-                game.setScreen(new HomeScreen(game));
+                game.setScreen(new HomeScreen(game,username));
             }
         });
 
