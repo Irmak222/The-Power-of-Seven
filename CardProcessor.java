@@ -45,8 +45,7 @@ public class CardProcessor {
 
     // Player flipping three cards consecutively
     public static void flipThree(Player player, Deck deck) {
-        player.addCardToHand(deck.draw(),deck);
-        player.addCardToHand(deck.draw(),deck);
+        for(int i = 0; i < 3 && Player.canFlipThree(player); i++)
         player.addCardToHand(deck.draw(),deck);
     }
 
