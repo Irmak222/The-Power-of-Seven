@@ -89,6 +89,21 @@ public class Player {
         this.isFrozen = false; // player is not frozen yet
     }
 
+    // check if the player can flip three cards
+    public boolean canFlipThree() {
+        if(this.isBusted()) {
+            return false;
+        }
+
+        int count = 0;
+        for (Card card : player.getActiveHand()) {
+            if (card instanceof NumberCard) {
+                count++;
+            }
+        }
+        return count < 7; 
+    }
+
     // Player being frozen
     public void freeze() {
         this.isFrozen = true;
