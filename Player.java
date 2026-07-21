@@ -96,7 +96,7 @@ public class Player {
         }
 
         int count = 0;
-        for (Card card : player.getActiveHand()) {
+        for (Card card : this.getActiveHand()) {
             if (card instanceof NumberCard) {
                 count++;
             }
