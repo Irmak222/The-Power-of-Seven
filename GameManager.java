@@ -45,7 +45,7 @@ public class GameManager {
 
     // Executing Stay action
     public void stay() {
-        players.get(currentPlayerIndex).freeze();
+        players.get(currentPlayerIndex).setIsStayed(true);
     }
 
     // Passes turn to the next active player
