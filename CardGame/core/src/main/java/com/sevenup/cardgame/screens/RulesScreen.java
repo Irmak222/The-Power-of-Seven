@@ -42,7 +42,6 @@ public class RulesScreen implements Screen{
         table.setFillParent(true);
         stage.addActor(table);
 
-        batch = new SpriteBatch();
         texture = new Texture(Gdx.files.internal("RulesScreen.png"));
 
         backBtn = new TextButton("Back", skin);
@@ -50,6 +49,9 @@ public class RulesScreen implements Screen{
         table.add(backBtn)
             .width(stage.getWidth() * 0.2f)
             .height(stage.getHeight() * 0.2f)
+            .expand()
+            .bottom()
+            .right()
             .pad(40);
 
         backBtn.addListener(new ChangeListener(){
@@ -62,9 +64,9 @@ public class RulesScreen implements Screen{
 
     public void render(float delta) {
         ScreenUtils.clear(0.93f, 0.90f, 0.98f, 1);
-        batch.begin();
-        batch.draw(texture, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        batch.end();;
+        stage.getBatch().begin();
+        stage.getBatch().draw(texture, 0, 0, stage.getViewport().getWorldWidth(), stage.getViewport().getWorldHeight());
+        stage.getBatch().end();;
         stage.act(delta);
         stage.draw();
     }
@@ -76,8 +78,10 @@ public class RulesScreen implements Screen{
         table.add(backBtn)
             .width(stage.getWidth() * 0.2f)
             .height(stage.getHeight() * 0.2f)
+            .expand()
+            .bottom()
+            .right()
             .pad(40);
-
     }
 
     public void hide() {
@@ -95,5 +99,6 @@ public class RulesScreen implements Screen{
     public void dispose() {
         stage.dispose();
         skin.dispose();
+        texture.dispose();
     }
 }
