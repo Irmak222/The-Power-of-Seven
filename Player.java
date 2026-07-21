@@ -17,6 +17,8 @@ public class Player {
     private boolean isBusted;
     // flag to check if the player gets restricted by other player's Freeze action or hits 'Stay'
     private boolean isFrozen;
+    // flag to check if the player gets restricted by other player's hit 'Stay'
+    private boolean isStayed;
     // all cards that are drawn during the current round
     private final ArrayList<Card> activeHand;
     // flag to checl if the player used second chance card
@@ -30,6 +32,7 @@ public class Player {
         this.totalScore = 0;
         this.isBusted = false;
         this.isFrozen = false;
+        this.isStayed = false;
         this.activeHand = new ArrayList<>();
     }
 
@@ -87,6 +90,7 @@ public class Player {
         this.roundScore = 0; // resets the score
         this.isBusted = false; // player is not busted yet
         this.isFrozen = false; // player is not frozen yet
+        this.isStayed = false;
     }
 
     // check if the player can flip three cards
@@ -123,7 +127,9 @@ public class Player {
     public void setIsBusted(boolean setBusted) {
         isBusted = setBusted;
     }
-    
+    public void setIsStayed(boolean stay) {
+        isStayed = stay;
+    }
     public void setTotalScore(int value){
         totalScore = value;
     }
@@ -152,7 +158,11 @@ public class Player {
     public boolean isFrozen() {
         return isFrozen;
     }
-
+    
+    public boolean  isStayed() {
+        return isStayed;
+    }
+    
     public ArrayList<Card> getActiveHand() {
         return activeHand;
     }
